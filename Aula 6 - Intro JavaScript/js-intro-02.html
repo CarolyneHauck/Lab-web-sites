@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>JS Intro 02</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<h1>JS Intro 02</h1>
+		
+		<h2>Exemplo 01</h2>
+		<script>
+			
+			var count = 1;
+			
+			document.write("<table border='1'>");
+			document.write("<tbody>");
+			
+			for(var i = 1; i <= 3; i++) {
+			
+				document.write("<tr>");
+				
+				for(var j = 1; j <= 3; j++) {
+				
+					document.write("<td>", count ,"</td>");
+					
+					count++;
+				
+				}
+				
+				document.write("</tr>");
+				
+			}
+			
+			document.write("</tbody>");
+			document.write("</table>");
+			
+		</script>
+		
+		<h2>Exemplo 02</h2>
+		<script>
+			
+			for(var i = 1; i <= 10; i++) {
+			
+				document.write("<table border='1'>");
+				document.write("<tbody>");
+				
+				for(var j = 1; j <= 10; j++) {
+				
+					document.write("<tr>");
+					document.write("<td>", j ,"</td>");
+					document.write("<td>x</td>");
+					document.write("<td>", i ,"</td>");
+					document.write("<td>=</td>");
+					document.write("<td>", j*i ,"</td>");
+					document.write("</tr>");
+					
+				}
+				
+				document.write("</tbody>");
+				document.write("</table>");
+			
+			}
+			
+		</script>
+	</body>
+</html>

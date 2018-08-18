@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 10: Formulário</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<h1>Formulários</h1>
+		
+		<form name="pessoa">
+			<label>Nome: <input type="text" name="nome" value=""/></label>
+			<label>Idade: <input type="text" name="idade" value=""/></label>
+			<input type="submit" />
+			<input type="reset" />
+		</form>
+		
+		<script>
+			document.pessoa.addEventListener("submit", formularioEnviado);
+			
+			function formularioEnviado(evento){
+				evento.preventDefault();
+				var nome = document.pessoa.nome.value;
+				var idade = document.pessoa.idade.value;
+				
+				console.log(nome);
+				console.log(idade);
+				
+				var p = document.createElement("p");
+				p.innerText = "Olá " + nome + "! Você tem " + idade + " anos.";
+				document.body.appendChild(p);
+			}
+		</script>
+	</body>
+</html>

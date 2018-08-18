@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Churrasco</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			body > div {
+				width: 960px;
+				margin: auto;
+			}
+			
+			form {
+				width: 960px;
+			}
+			
+			form > div {
+				width: 300px;
+				margin-right: 20px;
+			}
+			
+			form > div > div {
+				float: left;
+				margin-right: 20px;
+			}
+			
+			input {
+				width: 120px;
+			}
+			
+			button {
+				width: 80px;
+			}
+			
+			table {
+				width: 250px;
+			}
+			
+			output {
+				font-size: 2em;
+				color: red;
+			}
+			
+			td {
+				border-bottom: solid 1px black;
+				text-align: center;
+			}
+			
+			.itens {
+				font-weight: bold;
+				margin-top: 20px;
+				margin-bottom: 5px;
+			}
+			
+			.caixas {
+				float: left;
+				margin-bottom: 50px;
+			}
+			
+			.delete {
+				color: red;
+				font-family: sans-serif;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>Churrasco</h1>
+		
+			<form name="churrasco">
+				<div class="caixas">
+					<label>
+						<div class="itens">Nome</div>
+						<div>
+							<input id="nome" name="nome" type="text" placeholder="Digite o nome"/>
+							<button type="button" name="btnPessoa" onclick="addPessoa()">Adicionar</button>
+						</div>
+					</label>
+				</div>
+				
+				<div class="caixas">
+					<div>
+						<label>
+							<div class="itens">Produto</div>
+							<div>
+								<input id="produto" name="produto" type="text" placeholder="Digite o produto"/>
+							</div>
+						</label>
+					</div>
+					<div>
+						<label>
+							<div class="itens">Valor Un.</div>
+							<div>
+								<input id="valor" name="valor" type="number" step="0.01" placeholder="Digite o valor"/>
+							</div>
+						</label>
+					</div>
+				</div>
+				
+				<div class="caixas">
+					<div>
+						<div class="itens">Custo</div>
+						<button type="button" name="btnFixo" onclick="addFixo()">Custo Fixo</button>
+						<button type="button" name="btnCapita" onclick="addCapita()">Per Capita</button>
+					</div>
+				</div>
+				
+				<div class="caixas">
+					<label>
+						<div class="itens">Pessoas</div>
+						<div>
+							<ul id="pessoas">
+							</ul>
+						</div>
+					</label>
+				</div>
+				
+				<div class="caixas">
+					<label>
+						<div class="itens">Custos Fixos</div>
+						<div>
+							<table id="produtosF" cellspacing="0">
+							</table>
+						</div>
+					</label>
+				</div>
+				
+				<div class="caixas">
+					<label>
+						<div class="itens">Custos Per Capita</div>
+						<div>
+							<table id="produtosC" cellspacing="0">
+							</table>
+						</div>
+					</label>
+				</div>
+				
+				<div>
+					<label>
+						<div class="itens">Valor Total</div>
+						<div>
+							<output></output>
+						</div>
+					</label>
+				</div>
+				
+				<div>
+					<label>
+						<div class="itens">Valor para cada um</div>
+						<div>
+							<output></output>
+						</div>
+					</label>
+				</div>
+			</form>
+		</div>
+		
+		<script>
+			var iPessoa = 0;
+			var iProdutoF = 0;
+			var iProdutoC = 0;
+			var oPessoa = new Pessoa();
+			var oProdutoF = new ProdutoFixo();
+			var oProdutoC = new ProdutoCapita();
+		
+			function Pessoa() {
+				this.nome = [];
+			}
+			
+			function ProdutoFixo() {
+				this.nome = [];
+				this.valor = [];
+			}
+			
+			function ProdutoCapita() {
+				this.nome = [];
+				this.valor = [];
+			}
+			
+			function addPessoa() {
+				var txtNome = document.getElementById("nome");
+				
+				if (txtNome.value != "") {
+					oPessoa.nome[iPessoa] = txtNome.value;
+					iPessoa++;
+					calcula();
+					printPessoa();
+				}
+			}
+			
+			function addFixo() {
+				var txtProduto = document.getElementById("produto");
+				var txtValor = document.getElementById("valor");
+				
+				if (txtProduto.value != "" && txtValor.value != "") {
+					oProdutoF.nome[iProdutoF] = txtProduto.value;
+					oProdutoF.valor[iProdutoF] = txtValor.value;
+					iProdutoF++;
+					calcula();
+					printProdutoF();
+				}
+			}
+			
+			function addCapita() {
+				var txtProduto = document.getElementById("produto");
+				var txtValor = document.getElementById("valor");
+				
+				if (txtProduto.value != "" && txtValor.value != "") {
+					oProdutoC.nome[iProdutoC] = txtProduto.value;
+					oProdutoC.valor[iProdutoC] = txtValor.value;
+					iProdutoC++;
+					calcula();
+					printProdutoC();
+				}
+			}
+			
+			function calcula() {
+				var qtdPessoas = iPessoa;
+				var totFixo = 0;
+				var totCapita = 0;
+				var valTot = 0;
+				var valPessoa = 0;
+			
+				for (var i = 0; i <= iProdutoF; i++) {
+					if (oProdutoF.valor[i] != null)
+						totFixo += parseFloat(oProdutoF.valor[i]);
+				}
+				
+				for (var i = 0; i <= iProdutoC; i++) {
+					if (oProdutoC.valor[i] != null)
+						totCapita += parseFloat(oProdutoC.valor[i]);
+				}
+				
+				valTot = totFixo;
+				
+				if (qtdPessoas > 0) {
+					valTot += totCapita * qtdPessoas;
+					valPessoa = totCapita;
+					valPessoa += totFixo / qtdPessoas;
+				}
+				else {
+					valTot += totCapita;
+				}
+				
+				printValTot(valTot);
+				printValPessoa(valPessoa);
+			}
+			
+			function printPessoa() {
+				var ul = document.getElementById("pessoas");
+				ul.innerText = "";
+				
+				for (var i = 0; i < iPessoa; i++) {
+					var li = document.createElement("li");
+					var lDelete = document.createElement("label");
+					var lNome = document.createElement("label");
+					var attDelete = document.createAttribute("class");
+					attDelete.value = "delete";
+					
+					lDelete.innerText = "x ";
+					lDelete.setAttributeNode(attDelete);
+					lDelete.addEventListener("click",
+						(function(c) {
+							return function() {
+									oPessoa.nome.splice(c, 1);
+									iPessoa--;
+									calcula();
+									printPessoa();
+								}
+							}
+						)(i)
+					);
+					
+					lNome.innerText = oPessoa.nome[i];
+					li.appendChild(lDelete);
+					li.appendChild(lNome);
+					ul.appendChild(li);
+				}
+			}
+			
+			function printProdutoF() {
+				var table = document.getElementById("produtosF");
+				table.innerHTML = "";
+				
+				for (var i = 0; i < iProdutoF; i++) {
+					var tr = document.createElement("tr");
+					var tdNome = document.createElement("td");
+					var tdValor = document.createElement("td");
+					var tdDelete = document.createElement("td");
+					var lDelete = document.createElement("label");
+					var attDelete = document.createAttribute("class");
+					attDelete.value = "delete";
+					
+					lDelete.innerText = "x ";
+					lDelete.setAttributeNode(attDelete);
+					lDelete.addEventListener("click",
+						(function(c) {
+							return function() {
+									oProdutoF.nome.splice(c, 1);
+									oProdutoF.valor.splice(c, 1);
+									iProdutoF--;
+									calcula();
+									printProdutoF();
+								}
+							}
+						)(i)
+					);
+					
+					tdNome.innerText = oProdutoF.nome[i];
+					tdValor.innerText = "R$ " + parseFloat(oProdutoF.valor[i]).toFixed(2);
+					
+					tdDelete.appendChild(lDelete);
+					tr.appendChild(tdNome);
+					tr.appendChild(tdValor);
+					tr.appendChild(tdDelete);
+					table.appendChild(tr);
+				}
+			}
+			
+			function printProdutoC() {
+				var table = document.getElementById("produtosC");
+				table.innerHTML = "";
+				
+				for (var i = 0; i < iProdutoC; i++) {
+					var tr = document.createElement("tr");
+					var tdNome = document.createElement("td");
+					var tdValor = document.createElement("td");
+					var tdDelete = document.createElement("td");
+					var lDelete = document.createElement("label");
+					var attDelete = document.createAttribute("class");
+					attDelete.value = "delete";
+					
+					lDelete.innerText = "x ";
+					lDelete.setAttributeNode(attDelete);
+					lDelete.addEventListener("click",
+						(function(c) {
+							return function() {
+									oProdutoC.nome.splice(c, 1);
+									oProdutoC.valor.splice(c, 1);
+									iProdutoC--;
+									calcula();
+									printProdutoC();
+								}
+							}
+						)(i)
+					);
+					
+					tdNome.innerText = oProdutoC.nome[i];
+					tdValor.innerText = "R$ " + parseFloat(oProdutoC.valor[i]).toFixed(2);
+					
+					tdDelete.appendChild(lDelete);
+					tr.appendChild(tdNome);
+					tr.appendChild(tdValor);
+					tr.appendChild(tdDelete);
+					table.appendChild(tr);
+				}
+			}
+			
+			function printValTot(valTot) {
+				var output = document.getElementsByTagName("output")[0];
+				output.innerText = "R$ " + valTot.toFixed(2);
+			}
+			
+			function printValPessoa(valPessoa) {
+				var output = document.getElementsByTagName("output")[1];
+				output.innerText = "R$ " + valPessoa.toFixed(2);
+			}
+		</script>
+	</body>
+</html>

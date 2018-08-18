@@ -1,0 +1,28 @@
+
+header {
+	width: 1024px;
+	height: 110px;
+	margin-left: 150px;
+}
+
+nav {
+	width: 150px;
+	height: 220px;
+	float: left;
+	position: absolute;
+}
+
+article {
+	width: 991.29px;
+	height: 315.22px;
+	float: left;
+	position: relative;
+	left: 150px;
+}
+
+footer {
+	width: 1024px;
+	height: 50px;
+	clear: left;
+	margin-left: 150px;
+}

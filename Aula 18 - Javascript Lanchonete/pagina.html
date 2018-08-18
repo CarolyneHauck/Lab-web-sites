@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Lanchonete</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			body > div {
+				width: 800px;
+				margin: auto;
+			}
+			
+			form {
+				width: 800px;
+			}
+			
+			form > div {
+				width: 400px;
+			}
+			
+			form > div > div {
+				margin-bottom: 20px;
+			}
+			
+			select {
+				width: 200px;
+			}
+			
+			.itens {
+				font-weight: bold;
+				margin-top: 20px;
+				margin-bottom: 5px;
+			}
+			
+			.caixas {
+				float: left;
+				margin-bottom: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>Pedido</h1>
+		
+			<form name="pedido">
+				<div class="caixas">
+					<h2>Monte seu sanduíche</h2>
+					
+					<div>
+						<label>
+							<div class="itens">Pão:</div>
+							<div>
+								<select name="pao">
+									<option value="empty"></option>
+									<option value="italiano">Italiano</option>
+									<option value="queijo">Queijo</option>
+									<option value="parmesao">Parmesão</option>
+									<option value="oregano">Orégano</option>
+									<option value="ciabatta">Ciabatta</option>
+								</select>
+							</div>
+						</label>
+					</div>
+					<div>
+						<label>
+							<div class="itens">Recheio:</div>
+							<div>
+								<select name="recheio">
+									<option value="empty"></option>
+									<option value="filet">Filet</option>
+									<option value="frango">Frango</option>
+									<option value="pepperoni">Pepperoni</option>
+									<option value="calabresa">Calabresa</option>
+								</select>
+							</div>
+						</label>
+					</div>
+					
+					<div>
+						<div class="itens">Extras:</div>
+						<div>
+							<label>Requeijão <input name="requeijao" type="checkbox" /></label>
+							<label>Bacon <input name="bacon" type="checkbox" /></label>
+							<label>Azeitona <input name="azeitona" type="checkbox" /></label>
+						</div>
+					</div>
+					
+					<div>
+						<div class="itens">Tamanho do pão:</div>
+						<div>
+							<label>15cm <input name="tamanhoPao" type="radio" value="quinze" /></label>
+							<label>30cm <input name="tamanhoPao" type="radio" value="trinta" /></label>
+						</div>
+					</div>
+					
+					<div>
+						<div class="itens">Entrega:</div>
+						<div>
+							<label>Sim <input name="entrega" type="radio" value="sim" /></label>
+							<label>Não <input name="entrega" type="radio" value="nao" /></label>
+						</div>
+					</div>
+					
+					<div>
+						<button type="button" name="btnSanduiche" onclick="addSanduiche()">Adicionar Sanduíche ao Carrinho</button>
+					</div>
+				</div>
+				
+				<div class="caixas">
+					<h2>Carrinho</h2>
+					
+					<output></output>
+					<output></output>
+					<output></output>
+					
+					<div>
+						<input type="submit" value="Calcular Pedido" />
+					</div>
+				</div>
+				
+				<div id="refrigerante">
+					<h2>Refrigerante (Opcional)</h2>
+					
+					<div>
+						<label>
+							<div class="itens">Refrigerante:</div>
+							<div>
+								<select name="refri">
+									<option value="empty"></option>
+									<option value="coca">Coca-Cola</option>
+									<option value="fantaUva">Fanta Uva</option>
+									<option value="fantaLaranja">Fanta Laranja</option>
+									<option value="sprite">Sprite</option>
+									<option value="guarana">Guaraná Antártica</option>
+								</select>
+							</div>
+						</label>
+					</div>
+					
+					<div>
+						<div class="itens">Tamanho:</div>
+						<div>
+							<label>2L <input name="tamanhoRefri" type="radio" value="doisLitros" /></label>
+							<label>600ml <input name="tamanhoRefri" type="radio" value="seiscentos" /></label>
+						</div>
+					</div>
+					
+					<div>
+						<button type="button" name="btnRefrigerante">Adicionar Refrigerante ao Carrinho</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<script>
+			document.pedido.addEventListener("submit", calc);
+			var pao = "";
+			var recheio = "";
+			var extras = [];
+			var entrega = "";
+			var tamanhoPao = "";
+			
+			var refri = "";
+			var tamanhoRefri = "";
+			
+			function addSanduiche() {
+				pao = document.pedido.pao.value;
+				recheio = document.pedido.recheio.value;
+				extras[0] = document.pedido.requeijao.checked;
+				extras[1] = document.pedido.bacon.checked;
+				extras[2] = document.pedido.azeitona.checked;
+				tamanhoPao = document.pedido.tamanhoPao.value;
+				
+				eOutput = document.getElementsByTagName("output")[0];
+				
+				var ul = document.createElement("ul");
+				
+				var li = document.createElement("li");
+				li.innerText = pao;
+				ul.appendChild(li);
+				
+				li = document.createElement("li");
+				li.innerText = recheio;
+				ul.appendChild(li);
+				
+				li = document.createElement("li");
+				if (extras[0]) {
+					li.innerText = "Requeijão";
+				}
+				
+				if (extras[1]) {
+					if (li.innerText != "")
+						li.innerText += " | ";
+				
+					li.innerText += "Bacon";
+				}
+				
+				if (extras[2]) {
+					if (li.innerText != "")
+						li.innerText += " | ";
+					
+					li.innerText += "Azeitona";
+				}
+				
+				if (li.innerText != "")
+					ul.appendChild(li);
+				
+				eOutput.appendChild(ul);
+			}
+			
+			function addRefri() {
+				
+			}
+			
+			function calc(evento){
+				
+			}
+		</script>
+	</body>
+</html>

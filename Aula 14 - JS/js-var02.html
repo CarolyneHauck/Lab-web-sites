@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Variáveis JS 02</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			ol {
+				font-size: 2em;
+				border: 4px double gray;
+				width: 6em;
+				min-height: 3em;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Variáveis JS 02</h1>
+		<ol start="0">
+		</ol>
+		
+		<script>
+			var v = [123, 321, 312];
+			var ol = document.getElementsByTagName("ol")[0];
+			
+			function atualizaV() {
+				ol.innerHTML = "";
+				
+				for (var i = 0; i < v.length; i++) {
+					var li = document.createElement("li");
+					li.innerText = v[i];
+					ol.appendChild(li);
+				}
+			}
+			
+			function sorteiaV() {
+				var tamanho = Math.floor(Math.random()*10) + 1;
+				v = [];
+				
+				for (var i = 0; i < tamanho; i++) {
+					v[i] = Math.floor(Math.random()*6) + 1;
+				}
+			}
+			
+			setInterval(atualizaV, 500);
+			setInterval(sorteiaV, 2000);
+		</script>
+	</body>
+</html>

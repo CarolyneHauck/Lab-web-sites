@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 11: Somador</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<h1>Somador</h1>
+		
+		<form name="somador">
+			<label>A: <input type="text" name="A" value=""/></label>
+			<label>B: <input type="text" name="B" value=""/></label>
+			<input type="submit" />
+			<input type="reset" />
+		</form>
+		
+		<p>A soma de A+B é <output>?</output>.</p>
+		
+		<script>
+			document.somador.addEventListener("submit", soma);
+			
+			function soma(evento){
+				evento.preventDefault();
+				var a = parseInt(document.somador.A.value);
+				var b = parseInt(document.somador.B.value);
+				
+				var c = a+b;
+				
+				var eOutput = document.getElementsByTagName("output")[0];
+				eOutput.innerText = c;
+			}
+		</script>
+	</body>
+</html>

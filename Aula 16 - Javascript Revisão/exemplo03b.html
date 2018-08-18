@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 03b</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<script>
+			var quadrado = function (x) {
+				return x*x;
+			};
+			
+			console.log(quadrado);
+			console.log(quadrado(2));
+			
+			var cubo = function (x) {
+				return x*x*x;
+			};
+			
+			var imprimeResultado = function (funcao, x) {
+				console.log(funcao(x));
+			};
+			
+			imprimeResultado(quadrado, 2);
+			imprimeResultado(cubo, 2);
+		</script>
+	</body>
+</html>

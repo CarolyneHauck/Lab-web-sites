@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 07c</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<script>
+			var filhoExterno = pai();
+			filhoExterno();
+			filhoExterno();
+			filhoExterno();
+			
+			function pai () {
+				var x = 8;
+				
+				var filho = function () {
+					console.log(x);
+				}
+				
+				return filho;
+			}
+		</script>
+	</body>
+</html>

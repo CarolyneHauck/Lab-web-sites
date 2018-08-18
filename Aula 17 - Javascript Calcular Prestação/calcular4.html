@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Cálculo de Prestação (4)</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			body > div {
+				width: 250px;
+			}
+			
+			form > div {
+				text-align: right;
+			}
+			
+			ul {
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Cálculo de Prestação (4)</h1>
+		
+		<div>
+			<form name="prestacao">
+				<div>
+					<label>Valor: <input name="valor" type="number" step="0.01" placeholder="Valor Total da Compra"/></label>
+				</div>
+				<div>
+					Forma de Pagamento:
+					<ul>
+						<li>
+							<label>Dinheiro <input type="radio" name="forma" value="dinheiro" /></label>
+						</li>
+						<li>
+							<label>Depósito Bancário <input type="radio" name="forma" value="boleto" /></label>
+						</li>
+						<li>
+							<label>Cartão de Crédito <input type="radio" name="forma" value="cartao" /></label>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<label>Parcelas:
+						<select name="parcelas">
+							<option value="1">Parcela única</option>
+							<option value="2">2x</option>
+							<option value="3">3x</option>
+							<option value="4">4x</option>
+							<option value="5">5x</option>
+							<option value="6">6x</option>
+							<option value="7" selected>7x</option>
+							<option value="8">8x</option>
+							<option value="9">9x</option>
+							<option value="10">10x</option>
+							<option value="11">11x</option>
+							<option value="12">12x</option>
+						</select>
+					</label>
+				</div>
+				<div>
+					<label>Juros(%): <input name="juros" type="number" step="0.01" min="3" max="25" placeholder="Percentual de Juros"/></label>
+				</div>
+				<div>
+					<input type="submit" value="Calcular" />
+				</div>
+			</form>
+		</div>
+		
+		<div>
+			<output></output>
+			<output></output>
+		</div>
+		
+		<script>
+			document.prestacao.addEventListener("submit", calc);
+			
+			function calc(evento){
+				evento.preventDefault();
+				var valor = parseFloat(document.prestacao.valor.value);
+				var forma = document.prestacao.forma.value;
+				var parcelas = parseInt(document.prestacao.parcelas.value);
+				var percentJuros = parseFloat(document.prestacao.juros.value);
+				
+				console.log(forma);
+				
+				var total = (100+percentJuros)/100 * valor;
+				var valParc = total/parcelas;
+				
+				var eOutputT = document.getElementsByTagName("output")[0];
+				var eOutputP = document.getElementsByTagName("output")[1];
+				
+				eOutputP.innerHTML = "";
+				var ol = document.createElement("ol");
+				
+				for (var i = 0; i<parcelas; i++) {
+					var li = document.createElement("li");
+					li.innerText = "R$ " + valParc.toFixed(2);
+					ol.appendChild(li);
+				}
+				
+				eOutputT.innerText = "Total: R$ " + total.toFixed(2);
+				eOutputP.appendChild(ol);
+			}
+		</script>
+	</body>
+</html>

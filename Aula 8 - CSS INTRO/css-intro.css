@@ -1,0 +1,26 @@
+abbr {
+	color: red;
+	font-size: 12px;
+}
+
+strong {
+	color: rgb(0, 153, 0);
+	text-decoration: underline;
+}
+
+ol	li {
+	color: blue;
+}
+
+#zez {
+	color: tan;
+}
+
+li.desabrigado {
+	text-decoration: line-through;
+	color: orange;
+}
+
+.feliz {
+	color: gray;
+}

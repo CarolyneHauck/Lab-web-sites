@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>CSS Float Basic</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			#A, #B, #C {
+				border: 3px solid black;
+			}
+			
+			#A {
+				background-color: rgb(255, 180, 180);
+				height: 100px;
+			}
+			
+			#B {
+				background-color: rgb(180, 255, 180);
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			
+			#C {
+				background-color: rgb(180, 180, 255);
+				height: 100px;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="A">A</div>
+		<div id="B">B</div>
+		<div id="C">C</div>
+	</body>
+</html>

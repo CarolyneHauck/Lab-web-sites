@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>J da Velha</title>
+		<meta charset="UTF-8" />
+		
+		<link rel="stylesheet" href="css.css" />
+	</head>
+	<body>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<script>
+			var val = "X";
+			var tds = document.getElementsByTagName("td");
+			
+			var m = [
+						["", "", ""],
+						["", "", ""],
+						["", "", ""]
+					];
+			
+			
+			tds[0].addEventListener("click", function (){
+				m[0][0] = val;
+				atualizaMatriz();
+			});
+			
+			tds[1].addEventListener("click", function (){
+				m[0][1] = val;
+				atualizaMatriz();
+			});
+			
+			tds[2].addEventListener("click", function (){
+				m[0][2] = val;
+				atualizaMatriz();
+			});
+			
+			tds[3].addEventListener("click", function (){
+				m[1][0] = val;
+				atualizaMatriz();
+			});
+			
+			tds[4].addEventListener("click", function (){
+				m[1][1] = val;
+				atualizaMatriz();
+			});
+			
+			tds[5].addEventListener("click", function (){
+				m[1][2] = val;
+				atualizaMatriz();
+			});
+			
+			tds[6].addEventListener("click", function (){
+				m[2][0] = val;
+				atualizaMatriz();
+			});
+			
+			tds[7].addEventListener("click", function (){
+				m[2][1] = val;
+				atualizaMatriz();
+			});
+			
+			tds[8].addEventListener("click", function (){
+				m[2][2] = val;
+				atualizaMatriz();
+			});
+			
+			/*
+			for (var i = 0; i < 9; i++) {
+				var item = tds[i];
+				item.addEventListener("click", (function (){ 
+					var l = Math.floor(i/3);
+					var c = i%3;
+					return function (e) {
+						console.log(l, c);
+						m[l][c] = "X";
+						atualizaMatriz();
+					}
+				})());
+			}
+			*/
+			
+			function atualizaMatriz(){
+				for (var i = 0; i < 9; i++) {
+					var item = tds[i];
+					item.innerText = m[Math.floor(i/3)][i%3];
+				}
+				
+				if (val === "X")
+					val = "O";
+				else
+					val = "X";
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Variáveis JS 01</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			output {
+				font-size: 3em;
+				display: block;
+				border: 4px double gray;
+				width: 6em;
+				height: 3em;
+				line-height: 3em;
+				text-align: center;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Variáveis JS 01</h1>
+		<output></output>
+		
+		<script>
+			var x = 0;
+			var output = document.getElementsByTagName("output")[0];
+			
+			function atualizaX() {
+				output.innerText = x;
+			}
+			
+			function sorteiaX() {
+				x = Math.floor(Math.random()*6) + 1;
+			}
+			
+			setInterval(atualizaX, 500);
+			setInterval(sorteiaX, 2000);
+		</script>
+	</body>
+</html>

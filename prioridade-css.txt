@@ -1,0 +1,22 @@
+O peso de cada elemento é definido da seguinte forma: a*1000, b*100, c*10 e d*1. Conheça os critérios:
+
+a = 1 se tiver elemento inline Style=”" e a = 0 se não tiver.
+b = número total de seletores em #id
+c = número total de seletores em .classes, pseudo-classes e atributos
+d = número de seletores por elemento (tags como a, em, strong, p, div)
+
+
+Veja um exemplo comparativo:
+
+#corpo .conteudo p { color: #FFF; }
+div#corpo { color: #09C; }
+
+Este é um CSS com duas regras. Seguindo o conceito acima, no primeiro caso o #corpo .conteudo. p terá o valor 0111 e no segundo caso o div#corpo valerá 0101. E como 0111 é maior que 0101, se algum elemento for atingido pelas duas regras, é a #corpo .conteudo p que definirá seu estilo.
+
+
+Resumindo
+
+Uma regra escrita no atributo Style sempre sobreescreverá qualquer outra regra.
+Uma regra dentro de um #id será sempre mais forte que uma fora de um #id.
+Uma regra de .classe será sempre mais específica que uma regra somente de seletores de tag (em, p, div, etc..)
+E por último, se duas regras tiverem a mesma força, a que for declarada por último é a que valerá.

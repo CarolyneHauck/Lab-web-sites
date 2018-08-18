@@ -1,0 +1,30 @@
+
+body {
+	font-size: 0.8em;
+	font-family: sans-serif;
+	background-color: #FFD073;
+	width: 1024px;
+	margin: auto;
+	min-height: 600px;
+}
+
+header {
+	background-color: #FFAA00;
+	color: white;
+}
+
+article {
+	background-color: white;
+	border: 1px solid #FFAA00;
+	padding: 0.4em 1.2em 0.4em 1.2em;
+}
+
+nav, footer {
+	background-color: #876ED7;
+	color: #200772;
+}
+
+nav li:hover {
+	background-color: #200772;
+	color: #876ED7;
+}

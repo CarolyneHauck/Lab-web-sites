@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Modelo de Caixa</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html, body {
+				height: 100%;
+			}
+			
+			#A {
+				width: 100px;
+				height: 50px;
+				background-color: rgb(255, 205, 205);
+			}
+			
+			#B {
+				min-width: 10cm;
+				max-width: 20cm;
+				max-height: 15mm;
+				background-color: rgb(205, 255, 205);
+				padding-top: 10px;
+				padding-bottom: 10px;
+				padding-left: 15px;
+				padding-right: 8px;
+				overflow-y: scroll;
+			}
+			
+			#C {
+				width: 25%;
+				height: 25%;
+				background-color: rgb(205, 205, 255);
+				overflow-x: scroll;
+			}
+			
+			#A, #B, #C {
+				border-style: solid;
+				border-width: 2px;
+				border-color: red;
+				margin-left: 15px;
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+			
+			#A {
+				border-bottom-width: 0;
+			}
+			
+			#B {
+				margin-left: auto;
+				margin-right: auto;
+				
+				/*
+				border-top-color: red;
+				border-right-color: green;
+				border-bottom-color: blue;
+				border-left-color: yellow;
+				*/
+				
+				border-color: red green blue yellow;
+				border-width: 6px 10px;
+			}
+			
+			#C {
+				border-top-width: 0;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Modelo de Caixa</h1>
+		
+		<div id="A">A</div>
+		<div id="B">B</div>
+		<div id="C">C</div>
+	</body>
+</html>

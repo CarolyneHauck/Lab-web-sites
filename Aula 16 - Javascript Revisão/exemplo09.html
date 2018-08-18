@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 09: Tic-Tac-Toe 2</title>
+		<meta charset="UTF-8" />
+		<script src="tic-tac-toe.js"></script>
+		
+		<style>
+			#tabuleiro {
+				margin: auto;
+				width: 156px;
+				height: 156px;
+				background-color: tan;
+			}
+			
+			.casa {
+				border: 1px solid black;
+				width: 50px;
+				height: 50px;
+				float: left;
+				line-height: 50px;
+				font-size: 50px;
+				text-align: center;
+				font-family: cursive;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tabuleiro">
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+		</div>
+		<div>
+			<span>Jogadas:</span>
+			<span id="jogadas">-</span>
+		</div>
+		<div>
+			<span>Vez:</span>
+			<span id="vez">-</span>
+		</div>
+		<div>
+			<span>Vencedor:</span>
+			<span id="vencedor">-</span>
+		</div>
+		<script>
+			var ttt = new TicTacToe();
+			var casas = document.getElementsByClassName("casa");
+			
+			for (var i = 0; i < 9; i++) {
+				casas[i].addEventListener("click",
+					(function(c) {
+							return function() {
+								ttt.jogada(c);
+								atualiza();
+							}
+						}
+					)(i)
+				);
+			}
+			
+			setInterval(atualiza, 500);
+			function atualiza() {
+				var eJogadas = document.getElementById("jogadas");
+				eJogadas.innerText = ttt.jogadas;
+				
+				var eVez = document.getElementById("vez");
+				eVez.innerText = ttt.vez;
+				
+				var eVencedor = document.getElementById("vencedor");
+				eVencedor.innerText = ttt.vencedor;
+				
+				var casas = document.getElementsByClassName("casa");
+				for (var i = 0; i < 9; i++) {
+					casas[i].innerText = ttt.tabuleiro[i];
+				}
+			}
+		</script>
+	</body>
+</html>

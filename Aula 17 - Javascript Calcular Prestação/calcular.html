@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Cálculo de Prestação</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			body > div {
+				width: 250px;
+			}
+			
+			form > div {
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Cálculo de Prestação</h1>
+		
+		<div>
+			<form name="prestacao">
+				<div>
+					<label>Valor: <input type="text" name="valor" placeholder="Valor Total da Compra"/></label>
+				</div>
+				<div>
+					<label>Parcelas: <input type="text" name="parcelas" placeholder="Número de Parcelas"/></label>
+				</div>
+				<div>
+					<label>Juros(%): <input type="text" name="juros" placeholder="Percentual de Juros"/></label>
+				</div>
+				<div>
+					<input type="submit" value="Calcular" />
+				</div>
+			</form>
+		</div>
+		
+		<div>
+			<output></output>
+			<output></output>
+		</div>
+		
+		<script>
+			document.prestacao.addEventListener("submit", calc);
+			
+			function calc(evento){
+				evento.preventDefault();
+				var valor = parseFloat(document.prestacao.valor.value);
+				var parcelas = parseInt(document.prestacao.parcelas.value);
+				var percentJuros = parseFloat(document.prestacao.juros.value);
+				
+				var total = (100+percentJuros)/100 * valor;
+				var valParc = total/parcelas;
+				
+				var eOutputT = document.getElementsByTagName("output")[0];
+				var eOutputP = document.getElementsByTagName("output")[1];
+				
+				eOutputP.innerHTML = "";
+				var ol = document.createElement("ol");
+				
+				for (var i = 0; i<parcelas; i++) {
+					var li = document.createElement("li");
+					li.innerText = "R$ " + valParc.toFixed(2);
+					ol.appendChild(li);
+				}
+				
+				eOutputT.innerText = "Total: R$ " + total.toFixed(2);
+				eOutputP.appendChild(ol);
+			}
+		</script>
+	</body>
+</html>

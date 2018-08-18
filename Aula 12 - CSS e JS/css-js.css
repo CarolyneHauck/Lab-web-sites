@@ -1,0 +1,48 @@
+
+body {
+	margin: auto;
+	width: 600px;
+}
+
+#tela {
+	border: 8px double black;
+	width: 600px;
+	height: 400px;
+	position: relative;
+}
+
+.objetos {
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+	font-size: 0;
+	background-color: gray;
+	position: absolute;
+}
+
+#objeto {
+	left: 50px;
+	top: 100px;
+}
+
+#objeto1 {
+	background-color: lightblue;
+	left: 150px;
+	top: 200px;
+}
+
+#controles {
+	width: 104px;
+	margin: auto;
+	text-align: center;
+}
+
+#controles button {
+	font-size: 2em;
+	width: 50px;
+}
+
+#controles > div:first-child > button,
+#controles > div:last-child > button {
+	width: 100px;
+}

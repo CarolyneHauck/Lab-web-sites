@@ -1,0 +1,33 @@
+
+#A {
+	width: 1022px;
+	height: 108px;
+}
+
+#B {
+	width: 340px;
+	height: 108px;
+	float: left;
+	position: absolute;
+	top: 510px;
+}
+
+#D {
+	width: 339px;
+	height: 108px;
+	float: left;
+	position: absolute;
+	left: 370px;
+}
+
+#E {
+	width: 339px;
+	height: 108px;
+	float: right;
+}
+
+#C {
+	width: 1022px;
+	height: 398px;
+	position: relative;
+}

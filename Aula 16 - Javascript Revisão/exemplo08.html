@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 08: Tic-Tac-Toe</title>
+		<meta charset="UTF-8" />
+		
+		<style>
+			#tabuleiro {
+				margin: auto;
+				width: 156px;
+				height: 156px;
+				background-color: tan;
+			}
+			
+			.casa {
+				border: 1px solid black;
+				width: 50px;
+				height: 50px;
+				float: left;
+				line-height: 50px;
+				font-size: 50px;
+				text-align: center;
+				font-family: cursive;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tabuleiro">
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+			<div class="casa"></div>
+		</div>
+		<script>
+			var tabuleiro = [ "", "", "",
+							  "", "", "",
+							  "", "", "" ];
+			var proximo = "X";
+			var casas = document.getElementsByClassName("casa");
+			
+			for (var i = 0; i < 9; i++) {
+				casas[i].addEventListener("click",
+					(function(c) {
+							return function() {
+								if (tabuleiro[c] == "") {
+									tabuleiro[c] = proximo;
+									
+									casas[c].innerText = tabuleiro[c];
+								
+									if (proximo == "X") {
+										proximo = "O";
+									}
+									else {
+										proximo = "X";
+									}
+								}
+							}
+						}
+					)(i)
+				);
+			}
+		</script>
+	</body>
+</html>

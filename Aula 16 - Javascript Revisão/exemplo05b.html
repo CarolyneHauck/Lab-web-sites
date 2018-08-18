@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 05b</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<script>
+			function Pessoa (nome, idade, altura) {
+				this.nome = nome;
+				this.idade = idade;
+				this.altura = altura;
+			}
+			
+			Pessoa.prototype.imprime = function () {
+				console.log("Meu nome é " + this.nome +
+							", tenho " + this.idade +
+							" anos e " + this.altura + "m!");
+			};
+			
+			var fulano = new Pessoa("Fulano da Silva", 18, 1.82);
+			var beltrano = new Pessoa("Beltrano Goes", 19, 1.72);
+			
+			console.log(fulano, beltrano);
+			fulano.imprime();
+			beltrano.imprime();
+		</script>
+	</body>
+</html>

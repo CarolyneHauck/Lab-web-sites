@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 07d</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<script>
+			var N = 3;
+			var filhoExterno = (function (x) {
+					return function() {
+						console.log(x);
+					};
+				}
+			)(N);
+			
+			filhoExterno();
+			N = 2;
+			filhoExterno();
+			N = 1;
+			filhoExterno();
+		</script>
+	</body>
+</html>

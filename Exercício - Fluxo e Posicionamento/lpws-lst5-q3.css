@@ -1,0 +1,27 @@
+
+#A, #E {
+	width: 1022px;
+	height: 108px;
+}
+
+#B {
+	width: 118px;
+	height: 398px;
+	float: left;
+}
+
+#C {
+	width: 752px;
+	height: 398px;
+	float: left;
+}
+
+#D {
+	width: 148px;
+	height: 398px;
+	float: left;
+}
+
+#E {
+	clear: both;
+}

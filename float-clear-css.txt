@@ -1,0 +1,3 @@
+The float property specifies whether or not an element should float.
+
+The clear property is used to control the behavior of floating elements.

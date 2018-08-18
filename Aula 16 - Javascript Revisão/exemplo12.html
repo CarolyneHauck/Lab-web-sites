@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 12: Perímetro e Área Circunferência</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<h1>Perímetro e Área Circunferência</h1>
+		
+		<form name="circunferencia">
+			<label>Raio da Circunferência: <input type="text" name="raio" value=""/></label>
+			<input type="submit" />
+			<input type="reset" />
+		</form>
+		
+		<p>O perímetro é <output>?</output>.</p>
+		<p>A área é <output>?</output>.</p>
+		
+		<script>
+			document.circunferencia.addEventListener("submit", calc);
+			
+			function calc(evento){
+				evento.preventDefault();
+				var raio = parseFloat(document.circunferencia.raio.value);
+				
+				var perimetro = 2 * raio * Math.PI;
+				var area = Math.PI * Math.pow(raio, 2);
+				
+				var eOutputP = document.getElementsByTagName("output")[0];
+				var eOutputA = document.getElementsByTagName("output")[1];
+				eOutputP.innerText = perimetro.toFixed(2);
+				eOutputA.innerText = area.toFixed(2);
+			}
+		</script>
+	</body>
+</html>

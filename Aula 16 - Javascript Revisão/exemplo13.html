@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 13: Pilha</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<h1>Pilha</h1>
+		
+		<form name="pilha">
+			<label>Valor: <input type="text" name="valor" value=""/></label>
+			<button type="submit" name="envio" value="Push" />
+			<button type="submit" name="envio" value="Pop" />
+		</form>
+		
+		<output>?</output>
+		
+		<script>
+			var pilha = [];
+		
+			document.pilha.addEventListener("submit", push);
+			
+			function push(evento){
+				evento.preventDefault();
+				var val = document.pilha.valor.value;
+				
+				var perimetro = 2 * raio * Math.PI;
+				var area = Math.PI * Math.pow(raio, 2);
+				
+				var eOutputP = document.getElementsByTagName("output")[0];
+				var eOutputA = document.getElementsByTagName("output")[1];
+				eOutputP.innerText = perimetro.toFixed(2);
+				eOutputA.innerText = area.toFixed(2);
+			}
+		</script>
+	</body>
+</html>

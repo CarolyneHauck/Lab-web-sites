@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>CSS e JS</title>
+		<meta charset="UTF-8" />
+		
+		<link rel="stylesheet" href="css-js.css" />
+	</head>
+	<body>
+		<h1>CSS e JS</h1>
+		
+		<div id="tela">
+			<div class="objetos" id="objeto">O</div>
+			<div class="objetos" id="objeto1">O</div>
+		</div>
+		
+		<div id="controles">
+			<div><button>&uarr;</button></div>
+			
+			<div>
+				<button>&larr;</button>
+				<button>&rarr;</button>
+			</div>
+			
+			<div><button>&darr;</button></div>
+		</div>
+		
+		<script>
+			var botoes = document.querySelectorAll("#controles button");
+			console.log(botoes);
+			var btnCima = botoes[0];
+			var btnEsquerda = botoes[1];
+			var btnDireita = botoes[2];
+			var btnBaixo = botoes[3];
+			
+			var objeto = document.getElementById("objeto");
+			var objeto1 = document.getElementById("objeto1");
+			
+			var oTop = 100;
+			var oLeft = 50;
+			
+			var o1Top = 200;
+			var o1Left = 150;
+			
+			var olCd = 0;
+			
+			btnCima.addEventListener("click", function(e) {
+				console.log("Cima clicado! top:", objeto.style.top);
+				oTop -= 10;
+				objeto.style.top = oTop + "px";
+				moveOutros();
+			});
+			
+			btnBaixo.addEventListener("click", function(e) {
+				console.log("Baixo clicado! top:", objeto.style.top);
+				oTop += 10;
+				objeto.style.top = oTop + "px";
+				moveOutros();
+			});
+			
+			btnEsquerda.addEventListener("click", function(e) {
+				console.log("Esquerda clicado! left:", objeto.style.left);
+				oLeft -= 10;
+				objeto.style.left = oLeft + "px";
+				moveOutros();
+			});
+			
+			btnDireita.addEventListener("click", function(e) {
+				console.log("Direita clicado! left:", objeto.style.left);
+				oLeft += 10;
+				objeto.style.left = oLeft + "px";
+				moveOutros();
+			});
+			
+			function moveOutros() {
+				if (++olCd % 3 != 0) {
+					return;
+				}
+				
+				olCd = 0;
+			
+				if (oLeft < o1Left) {
+					o1Left -= 10;
+				}
+				else if (oLeft > o1Left) {
+					o1Left += 10;
+				}
+				
+				if (oTop < o1Top) {
+					o1Top -= 10;
+				}
+				else if (oTop > o1Top) {
+					o1Top += 10;
+				}
+				
+				objeto1.style.left = o1Left + "px";
+				objeto1.style.top = o1Top + "px";
+			}
+		</script>
+	</body>
+</html>

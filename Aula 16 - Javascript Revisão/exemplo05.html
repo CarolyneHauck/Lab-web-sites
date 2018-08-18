@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exemplo 05</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<script>
+			var fulano = {};
+			console.log(fulano);
+			console.log(typeof fulano);
+			
+			fulano.nome = "Fulano da Silva";
+			fulano.idade = 18;
+			fulano.altura = 1.82;
+			fulano.imprime = function () {
+				console.log(this.nome);
+				console.log(this.idade);
+				console.log(this.altura);
+			};
+			console.log(fulano);
+			fulano.imprime();
+		</script>
+	</body>
+</html>
